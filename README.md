@@ -16,7 +16,10 @@ Edit .env file for your database configuration
 <pre>
 php artisan migrate
 </pre>
-</p>
+For version Laravel 5.8 switch to the branch:
+<pre>
+    git checkout master-5.8
+</pre>
 
 
 ## About Laravel
