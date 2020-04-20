@@ -21,6 +21,28 @@ For version Laravel 5.8 switch to the branch:
 git checkout stable-5.8
 </pre>
 
+## Description
+<b>API</b>
+<ul>
+    <li>POST /api/v1/document/ - create a draft document</li>
+    <li>GET /api/v1/document/{id} - get document by id</li>
+    <li>PATCH /api/v1/document/{id} - edit document</li>
+    <li>POST /api/v1/document/{id}/publish - publish document</li>
+    <li>GET /api/v1/document/?page=1&perPage=20 - get a list of documents with
+pagination, sorting into the last ones created from above.</li>
+</ul>
+
+<b>Additional terms:</b>
+<ul>
+    <li>If the document is not found, then the 404 code is returned in the response.</li>
+    <li>When trying to edit a document that has already been published, it should
+come back 400.</li>
+    <li>Attempting to publish an already published document returns 200.</li>
+    <li>All requests for a specific document return this document.</li>
+    <li>The list of documents is returned as an array of documents and pagination values.</li>
+    <li>PATCH request is sent with the body json in the corresponding document hierarchy, all
+fields other than payload are ignored. If payload is not transmitted, then the answer is 400.</li>
+</ul>
 
 ## About Laravel
 
