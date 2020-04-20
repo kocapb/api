@@ -18,7 +18,7 @@ php artisan migrate
 </pre>
 For version Laravel 5.8 switch to the branch:
 <pre>
-git checkout master-5.8
+git checkout stable-5.8
 </pre>
 
 
