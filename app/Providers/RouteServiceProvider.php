@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Validator\GenericValidator;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -32,7 +31,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('uuid', (new GenericValidator())->getPattern());
+        Route::pattern('uuid', (Uuid::VALID_PATTERN));
 
         parent::boot();
     }

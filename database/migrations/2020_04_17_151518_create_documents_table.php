@@ -15,7 +15,7 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->uuid('id')->unique('document_uuid');
+            $table->uuid('id')->unique();
             $table->enum('status', Document::getStatuses())->default(Document::STATUS_DRAFT);
             $table->json('payload');
             $table->timestamps();
