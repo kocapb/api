@@ -66,21 +66,4 @@ class Document extends Model
             $model->setAttribute('status', self::STATUS_DRAFT);
         });
     }
-
-    /**
-     * @param $value
-     * @return mixed
-     */
-    public function getPayloadAttribute($value)
-    {
-        return json_decode($value);
-    }
-
-    /**
-     * @param $value
-     */
-    public function setPayLoadAttribute($value)
-    {
-        $this->payload = json_encode($value);
-    }
 }
