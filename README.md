@@ -41,14 +41,13 @@ git checkout stable-5.8
 </ul>
 
 ### Объект документа
-<pre>
-document = {
-  id: "some-uuid-string",
-  status: "draft|published",
-  payload: Object,
-  created_at: "iso-8601 date time with time zone",
-  updated_at: "iso-8601 date time with time zone"
-}
+<pre><span class="pl-smi">document</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span>
+  <span class="pl-c1">id</span>: <span class="pl-s">"some-uuid-string"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">status</span>: <span class="pl-s">"draft|published"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">payload</span>: <span class="pl-v">Object</span><span class="pl-kos">,</span>
+  <span class="pl-c1">created_at</span>: <span class="pl-s">"iso-8601 date time without time zone"</span><span class="pl-kos">,</span>
+  <span class="pl-c1">updated_at</span>: <span class="pl-s">"iso-8601 date time without time zone"</span>
+<span class="pl-kos">}</span>
 </pre>
 
 ## Пример работы
@@ -56,240 +55,202 @@ document = {
 ### 1. Клиент делает запрос на создание документа
 Запрос:
 <pre>
-POST /api/v1/document HTTP/1.1
-accept: application/json
+<span class="pl-k">POST</span><span class="pl-c1"> /api/v1/document HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span>
 </pre>
 
 Ответ:
-<pre>
+<pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
+
 {
-    "document": {
-        "payload": {},
-        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
-        "status": "draft",
-        "updated_at": "2020-05-25 08:16:44",
-        "created_at": "2020-05-25 08:16:44"
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dd6a2519-cc4b-4931-9567-040c30dfa0ca<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>draft<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {},
+        <span class="pl-s"><span class="pl-pds">"</span>created_at<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 08:16:44<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>updated_at<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 08:16:44<span class="pl-pds">"</span></span>     
     }
-}
-</pre>
+}</pre>
 
 ### 2. Клиент редактирует документ первый раз
 Запрос:
-<pre>
-PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
-accept: application/json
-content-type: application/json
+<pre><span class="pl-k">PATCH</span><span class="pl-c1"> /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span>
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
 
 {
-    "document": {
-        "payload": {
-            "actor": "The fox",
-            "meta": {
-                "type": "quick",
-                "color": "brown"
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The fox<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>quick<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>color<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>brown<span class="pl-pds">"</span></span>
             },
-            "actions": [
+            <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                 {
-                    "action": "jump over",
-                    "actor": "lazy dog"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>jump over<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>lazy dog<span class="pl-pds">"</span></span>
                 }
             ]
         }
     }
-}
-</pre>
+}</pre>
+
 Ответ: 
-<pre>
-HTTP/1.1 200 OK
-content-type: application/json
+
+<pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
 
 {
-    "document": {
-        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
-        "status": "draft",
-        "payload": {
-            "meta": {
-                "type": "cunning",
-                "color": null
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dd6a2519-cc4b-4931-9567-040c30dfa0ca<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>draft<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The fox<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>quick<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>color<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>brown<span class="pl-pds">"</span></span>
             },
-            "actions": [
+            <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                 {
-                    "action": "eat",
-                    "actor": "blob"
-                },
-                {
-                    "action": "run away"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>jump over<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>lazy dog<span class="pl-pds">"</span></span>
                 }
             ]
         },
-        "created_at": "2020-05-25 08:16:44",
-        "updated_at": "2020-05-25 09:04:57"
+        <span class="pl-s"><span class="pl-pds">"</span>createAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 08:16:44<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>modifyAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:04:57<span class="pl-pds">"</span></span>
     }
-}
-</pre>
+}</pre>
 
 ### 3. Клиент редактирует документ
 Запрос:
-<pre>
-PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
-accept: application/json
-content-type: application/json
+<pre><span class="pl-k">PATCH</span><span class="pl-c1"> /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span>
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
 
 {
-    "document": {
-        "payload": {
-            "meta": {
-                "type": "cunning",
-                "color": null
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>cunning<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>color<span class="pl-pds">"</span></span>: <span class="pl-c1">null</span>
             },
-            "actions": [
+            <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                 {
-                    "action": "eat",
-                    "actor": "blob"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>eat<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>blob<span class="pl-pds">"</span></span>
                 },
                 {
-                    "action": "run away"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>run away<span class="pl-pds">"</span></span>
                 }
             ]
         }
     }
-}
-</pre>
+}</pre>
 
 Ответ:
-<pre>
+<pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
+
 {
-    "document": {
-        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
-        "status": "draft",
-        "payload": {
-            "meta": {
-                "type": "cunning",
-                "color": null
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dd6a2519-cc4b-4931-9567-040c30dfa0ca<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>draft<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The fox<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>cunning<span class="pl-pds">"</span></span>,
             },
-            "actions": [
+            <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                 {
-                    "action": "eat",
-                    "actor": "blob"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>eat<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>blob<span class="pl-pds">"</span></span>
                 },
                 {
-                    "action": "run away"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>run away<span class="pl-pds">"</span></span>
                 }
             ]
         },
-        "created_at": "2020-05-25 08:16:44",
-        "updated_at": "2020-05-25 09:07:45"
+        <span class="pl-s"><span class="pl-pds">"</span>createAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 08:16:44<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>modifyAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:07:45<span class="pl-pds">"</span></span>
     }
-}
-</pre>
+}</pre>
 
 ### 4. Клиент публикует документ
 Запрос:
 <pre>
-POST /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca/publish HTTP/1.1
-accept: application/json
+<span class="pl-k">POST</span><span class="pl-c1"> /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca/publish HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span>
 </pre>
 
 Ответ:
-<pre>
+<pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
+
 {
-    "document": {
-        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
-        "status": "published",
-        "payload": {
-            "actor": "The fox",
-            "meta": {
-                "type": "quick",
-                "color": "brown"
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dd6a2519-cc4b-4931-9567-040c30dfa0ca<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>published<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+            <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The fox<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>cunning<span class="pl-pds">"</span></span>,
             },
-            "actions": [
+            <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                 {
-                    "action": "jump over",
-                    "actor": "ssdfsdg"
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>eat<span class="pl-pds">"</span></span>,
+                    <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>blob<span class="pl-pds">"</span></span>
+                },
+                {
+                    <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>run away<span class="pl-pds">"</span></span>
                 }
             ]
         },
-        "created_at": "2020-05-25 09:33:46",
-        "updated_at": "2020-05-25 09:45:02"
+        <span class="pl-s"><span class="pl-pds">"</span>createAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:33:46<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>modifyAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:45:02<span class="pl-pds">"</span></span>
     }
-}
-</pre>
+}</pre>
 
 ### 5. Клиент получает запись в списке
 Запрос:
 <pre>
-GET /api/v1/document/?page=1 HTTP/1.1
-accept: application/json
+<span class="pl-k">GET</span><span class="pl-c1"> /api/v1/document/?page=1 HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span>
 </pre>
 
 Ответ:
-<pre>
+<pre>HTTP/<span class="pl-c1">1.1</span> <span class="pl-c1">200</span> OK
+<span class="pl-s"><span class="pl-v">content-type:</span> application/json</span>
+
 {
-    "document": [
+    <span class="pl-s"><span class="pl-pds">"</span>document<span class="pl-pds">"</span></span>: [
         {
-            "id": "54a79c31-4ebb-4333-b72d-1ed86a09c187",
-            "status": "published",
-            "payload": {
-                "meta": {
-                    "type": "cunning",
-                    "color": null
+            <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dd6a2519-cc4b-4931-9567-040c30dfa0ca<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>published<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>payload<span class="pl-pds">"</span></span>: {
+                <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>The fox<span class="pl-pds">"</span></span>,
+                <span class="pl-s"><span class="pl-pds">"</span>meta<span class="pl-pds">"</span></span>: {
+                    <span class="pl-s"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>cunning<span class="pl-pds">"</span></span>,
                 },
-                "actions": [
+                <span class="pl-s"><span class="pl-pds">"</span>actions<span class="pl-pds">"</span></span>: [
                     {
-                        "action": "eat",
-                        "actor": "sss"
+                        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>eat<span class="pl-pds">"</span></span>,
+                        <span class="pl-s"><span class="pl-pds">"</span>actor<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>blob<span class="pl-pds">"</span></span>
                     },
                     {
-                        "action": "run away"
+                        <span class="pl-s"><span class="pl-pds">"</span>action<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>run away<span class="pl-pds">"</span></span>
                     }
                 ]
             },
-            "created_at": "2020-05-25 09:18:20",
-            "updated_at": "2020-05-25 09:20:49"
-        },
-        {
-            "id": "1f5392e4-2061-4dee-aa5f-6b6813b4ab04",
-            "status": "draft",
-            "payload": {
-                "actor": "The fox",
-                "meta": {
-                    "type": "quick",
-                    "color": "brown"
-                },
-                "actions": [
-                    {
-                        "action": "jump over",
-                        "actor": "lazy dog"
-                    }
-                ]
-            },
-            "created_at": "2020-05-25 09:24:34",
-            "updated_at": "2020-05-25 09:27:02"
-        },
-        {
-            "id": "00e31ad1-9647-4163-8c6a-cefde410f9cc",
-            "status": "published",
-            "payload": {
-                "actor": "The fox",
-                "meta": {
-                    "type": "quick",
-                    "color": "brown"
-                },
-                "actions": [
-                    {
-                        "action": "jump over",
-                        "actor": "ssdfsdg"
-                    }
-                ]
-            },
-            "created_at": "2020-05-25 09:33:46",
-            "updated_at": "2020-05-25 09:45:02"
+            <span class="pl-s"><span class="pl-pds">"</span>createAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:33:46<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>modifyAt<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>2020-05-25 09:45:02<span class="pl-pds">"</span></span>
         }
     ],
-    "pagination": {
-        "page": 1,
-        "perPage": 20,
-        "total": 3
+    <span class="pl-s"><span class="pl-pds">"</span>pagination<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>page<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>perPage<span class="pl-pds">"</span></span>: <span class="pl-c1">20</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>total<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>
     }
-}
-</pre>
+}</pre>
