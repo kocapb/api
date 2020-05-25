@@ -212,3 +212,82 @@ accept: application/json
     }
 }
 </pre>
+
+## 5. Клиент получает запись в списке
+Запрос:
+<pre>
+GET /api/v1/document/?page=1 HTTP/1.1
+accept: application/json
+</pre>
+
+Ответ:
+<pre>
+{
+    "document": [
+        {
+            "id": "54a79c31-4ebb-4333-b72d-1ed86a09c187",
+            "status": "published",
+            "payload": {
+                "meta": {
+                    "type": "cunning",
+                    "color": null
+                },
+                "actions": [
+                    {
+                        "action": "eat",
+                        "actor": "sss"
+                    },
+                    {
+                        "action": "run away"
+                    }
+                ]
+            },
+            "created_at": "2020-05-25 09:18:20",
+            "updated_at": "2020-05-25 09:20:49"
+        },
+        {
+            "id": "1f5392e4-2061-4dee-aa5f-6b6813b4ab04",
+            "status": "draft",
+            "payload": {
+                "actor": "The fox",
+                "meta": {
+                    "type": "quick",
+                    "color": "brown"
+                },
+                "actions": [
+                    {
+                        "action": "jump over",
+                        "actor": "lazy dog"
+                    }
+                ]
+            },
+            "created_at": "2020-05-25 09:24:34",
+            "updated_at": "2020-05-25 09:27:02"
+        },
+        {
+            "id": "00e31ad1-9647-4163-8c6a-cefde410f9cc",
+            "status": "published",
+            "payload": {
+                "actor": "The fox",
+                "meta": {
+                    "type": "quick",
+                    "color": "brown"
+                },
+                "actions": [
+                    {
+                        "action": "jump over",
+                        "actor": "ssdfsdg"
+                    }
+                ]
+            },
+            "created_at": "2020-05-25 09:33:46",
+            "updated_at": "2020-05-25 09:45:02"
+        }
+    ],
+    "pagination": {
+        "page": 1,
+        "perPage": 20,
+        "total": 3
+    }
+}
+</pre>
