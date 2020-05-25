@@ -104,23 +104,52 @@ content-type: application/json
 
 {
     "document": {
-        "id": "718ce61b-a669-45a6-8f31-32ba41f94784",
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
         "status": "draft",
         "payload": {
-            "actor": "The fox",
             "meta": {
-                "type": "quick",
-                "color": "brown"
+                "type": "cunning",
+                "color": null
             },
             "actions": [
                 {
-                    "action": "jump over",
-                    "actor": "lazy dog"
+                    "action": "eat",
+                    "actor": "blob"
+                },
+                {
+                    "action": "run away"
                 }
             ]
         },
-        "created_at": "2020-05-25 09:16:44",
-        "updated_at": "2020-05-25 09:16:44"
+        "created_at": "2020-05-25 08:16:44",
+        "updated_at": "2020-05-25 09:04:57"
+    }
+}
+</pre>
+## 3. Клиент редактирует документ
+Запрос
+<pre>
+PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
+accept: application/json
+content-type: application/json
+
+{
+    "document": {
+        "payload": {
+            "meta": {
+                "type": "cunning",
+                "color": null
+            },
+            "actions": [
+                {
+                    "action": "eat",
+                    "actor": "blob"
+                },
+                {
+                    "action": "run away"
+                }
+            ]
+        }
     }
 }
 </pre>
