@@ -119,8 +119,8 @@ content-type: application/json
                 }
             ]
         },
-        "createAt": "2018-09-01 20:00:00+07:00",
-        "modifyAt": "2018-09-01 20:01:00+07:00"
+        "created_at": "2020-05-25 09:16:44",
+        "updated_at": "2020-05-25 09:16:44"
     }
 }
 </pre>
