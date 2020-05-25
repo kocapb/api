@@ -180,3 +180,35 @@ content-type: application/json
     }
 }
 </pre>
+
+## 4. Клиент публикует документ
+Запрос:
+<pre>
+POST /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca/publish HTTP/1.1
+accept: application/json
+</pre>
+
+Ответ:
+<pre>
+{
+    "document": {
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
+        "status": "published",
+        "payload": {
+            "actor": "The fox",
+            "meta": {
+                "type": "quick",
+                "color": "brown"
+            },
+            "actions": [
+                {
+                    "action": "jump over",
+                    "actor": "ssdfsdg"
+                }
+            ]
+        },
+        "created_at": "2020-05-25 09:33:46",
+        "updated_at": "2020-05-25 09:45:02"
+    }
+}
+</pre>
