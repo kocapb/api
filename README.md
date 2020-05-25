@@ -56,9 +56,8 @@ document = {
 ## <h3>1. Клиент делает запрос на создание документа</h3>
 Запрос:
 <pre>
-    POST /api/v1/document HTTP/1.1
-    accept: application/json
-</pre>
+<span class="pl-k">POST</span><span class="pl-c1"> /api/v1/document HTTP/1.1</span>
+<span class="pl-s"><span class="pl-v">accept:</span> application/json</span></pre>
 Ответ:
 <pre>
 {
