@@ -21,8 +21,7 @@ For version Laravel 5.8 switch to the branch:
 git checkout stable-5.8
 </pre>
 
-## Описание
-<b>API</b>
+## API
 <ul>
     <li>POST /api/v1/document/ - создаем черновик документа</li>
     <li>GET /api/v1/document/{id} - получить документ по id</li>
@@ -41,7 +40,7 @@ git checkout stable-5.8
     <li>апрос PATCH отправляется с телом json в соответсвующей иерархии документа, все поля, кроме payload игнорируются. Если payload не передан, то ответ 400.</li>
 </ul>
 
-<b>Объект документа</b>
+## <h3>Объект документа</h3>
 <pre>
 document = {
   id: "some-uuid-string",
