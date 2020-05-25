@@ -40,3 +40,14 @@ git checkout stable-5.8
     <li>Список документов возвращается в виде массива документов и значений пагинации.</li>
     <li>апрос PATCH отправляется с телом json в соответсвующей иерархии документа, все поля, кроме payload игнорируются. Если payload не передан, то ответ 400.</li>
 </ul>
+
+<b>Объект документа</b>
+<pre>
+document = {
+  id: "some-uuid-string",
+  status: "draft|published",
+  payload: Object,
+  createAt: "iso-8601 date time with time zone",
+  modifyAt: "iso-8601 date time with time zone"
+}
+</pre>
