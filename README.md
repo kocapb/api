@@ -40,7 +40,7 @@ git checkout stable-5.8
     <li>апрос <code>PATCH</code> отправляется с телом json в соответсвующей иерархии документа, все поля, кроме <code>payload</code> игнорируются. Если <code>payload</code> не передан, то ответ 400.</li>
 </ul>
 
-## <h3>Объект документа</h3>
+### Объект документа
 <pre>
 document = {
   id: "some-uuid-string",
@@ -53,7 +53,7 @@ document = {
 
 ## Пример работы
 
-## <h3>1. Клиент делает запрос на создание документа</h3>
+### 1. Клиент делает запрос на создание документа
 Запрос:
 <pre>
 <span class="pl-k">POST</span><span class="pl-c1"> /api/v1/document HTTP/1.1</span>
@@ -71,7 +71,7 @@ document = {
 }
 </pre>
 
-## <h3>2. Клиент редактирует документ первый раз</h3>
+### 2. Клиент редактирует документ первый раз
 Запрос:
 <pre>
 PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
@@ -125,7 +125,8 @@ content-type: application/json
     }
 }
 </pre>
-## 3. Клиент редактирует документ
+
+### 3. Клиент редактирует документ
 Запрос:
 <pre>
 PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
@@ -180,7 +181,7 @@ content-type: application/json
 }
 </pre>
 
-## 4. Клиент публикует документ
+### 4. Клиент публикует документ
 Запрос:
 <pre>
 POST /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca/publish HTTP/1.1
@@ -212,7 +213,7 @@ accept: application/json
 }
 </pre>
 
-## 5. Клиент получает запись в списке
+### 5. Клиент получает запись в списке
 Запрос:
 <pre>
 GET /api/v1/document/?page=1 HTTP/1.1
