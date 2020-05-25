@@ -4,8 +4,8 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\Json\PaginatedDocumentResponse;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
 /**
  * Class DocumentCollection
@@ -26,7 +26,7 @@ class DocumentCollection extends ResourceCollection
     /**
      * Transform the resource collection into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request)
@@ -44,14 +44,14 @@ class DocumentCollection extends ResourceCollection
     /**
      * Create a paginate-aware HTTP response.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return JsonResponse
      */
     protected function preparePaginatedResponse($request)
     {
         if ($this->preserveAllQueryParameters) {
             $this->resource->appends($request->query());
-        } elseif (! is_null($this->queryParameters)) {
+        } elseif (!is_null($this->queryParameters)) {
             $this->resource->appends($this->queryParameters);
         }
 

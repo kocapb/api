@@ -13,18 +13,16 @@ use Ramsey\Uuid\Uuid;
  */
 class Document extends Model
 {
-    /** @var int  */
+    /** @var int */
     const PER_PAGE = 20;
     /** @var string */
     const STATUS_PUBLISHED = 'published';
-    /** @var string  */
+    /** @var string */
     const STATUS_DRAFT = 'draft';
-
-    /** @var string  */
-    protected $keyType = 'string';
-    /** @var bool  */
+    /** @var bool */
     public $incrementing = false;
-
+    /** @var string */
+    protected $keyType = 'string';
     /**
      * The attributes that are mass assignable.
      *

@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Resources\DocumentCollection;
-use App\Http\Resources\Error;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\ServiceProvider;
 

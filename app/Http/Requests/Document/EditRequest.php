@@ -3,8 +3,8 @@
 namespace App\Http\Requests\Document;
 
 use App\Http\Requests\Request;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -43,12 +43,12 @@ class EditRequest extends Request
     /**
      * Handle a failed validation attempt.
      *
-     * @param  Validator  $validator
+     * @param Validator $validator
      * @return void
      *
      * @throws HttpResponseException
      */
-    protected function failedValidation(Validator $validator) : void
+    protected function failedValidation(Validator $validator): void
     {
         throw (new HttpResponseException(response()->json([], Response::HTTP_BAD_REQUEST)));
     }

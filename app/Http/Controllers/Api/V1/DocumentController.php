@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Document\EditRequest;
 use App\Http\Requests\Document\ListRequest;
+use App\Http\Resources\Document as DocumentResources;
 use App\Http\Resources\DocumentCollection;
 use App\Http\Resources\Error;
 use App\Models\Document;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
-use App\Http\Resources\Document as DocumentResources;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -28,9 +28,7 @@ class DocumentController extends Controller
             /** @var Document $document */
             $document = new Document();
             $document->save();
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return (new Error($exception))->response()->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
@@ -58,15 +56,12 @@ class DocumentController extends Controller
         try {
             /** @var Document $document */
             $document = Document::findOrFail($uuid);
-            if (Document::STATUS_PUBLISHED === $document->status)
-            {
+            if (Document::STATUS_PUBLISHED === $document->status) {
                 return (new DocumentResources($document))->response()->setStatusCode(Response::HTTP_BAD_REQUEST);
             }
             $document->payload = $request->json()->get('document')['payload'];
             $document->save();
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return (new Error($exception))->response()->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
@@ -84,9 +79,7 @@ class DocumentController extends Controller
         try {
             $document->status = Document::STATUS_PUBLISHED;
             $document->save();
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             return (new Error($exception))->response()->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 

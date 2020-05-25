@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class Document
@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
  */
 class Document extends JsonResource
 {
-    /** @var string  */
+    /** @var string */
     static public $wrap = 'document';
+
     /**
      * Transform the resource into an array.
      *
-     * @param  Request  $request
+     * @param Request $request
      * @return array
      */
     public function toArray($request)
