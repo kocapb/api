@@ -47,7 +47,7 @@ document = {
   id: "some-uuid-string",
   status: "draft|published",
   payload: Object,
-  createAt: "iso-8601 date time with time zone",
-  modifyAt: "iso-8601 date time with time zone"
+  created_at: "iso-8601 date time with time zone",
+  updated_at: "iso-8601 date time with time zone"
 }
 </pre>
