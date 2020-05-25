@@ -50,3 +50,77 @@ document = {
   updated_at: "iso-8601 date time with time zone"
 }
 </pre>
+
+## Пример работы
+
+## <h3>1. Клиент делает запрос на создание документа</h3>
+Запрос:
+<pre>
+    POST /api/v1/document HTTP/1.1
+    accept: application/json
+</pre>
+Ответ:
+<pre>
+{
+    "document": {
+        "payload": {},
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
+        "status": "draft",
+        "updated_at": "2020-05-25 08:16:44",
+        "created_at": "2020-05-25 08:16:44"
+    }
+}
+</pre>
+
+## <h3>2. Клиент редактирует документ первый раз</h3>
+Запрос:
+<pre>
+PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
+accept: application/json
+content-type: application/json
+
+{
+    "document": {
+        "payload": {
+            "actor": "The fox",
+            "meta": {
+                "type": "quick",
+                "color": "brown"
+            },
+            "actions": [
+                {
+                    "action": "jump over",
+                    "actor": "lazy dog"
+                }
+            ]
+        }
+    }
+}
+</pre>
+Ответ: 
+<pre>
+HTTP/1.1 200 OK
+content-type: application/json
+
+{
+    "document": {
+        "id": "718ce61b-a669-45a6-8f31-32ba41f94784",
+        "status": "draft",
+        "payload": {
+            "actor": "The fox",
+            "meta": {
+                "type": "quick",
+                "color": "brown"
+            },
+            "actions": [
+                {
+                    "action": "jump over",
+                    "actor": "lazy dog"
+                }
+            ]
+        },
+        "createAt": "2018-09-01 20:00:00+07:00",
+        "modifyAt": "2018-09-01 20:01:00+07:00"
+    }
+}
+</pre>
