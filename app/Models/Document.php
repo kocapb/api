@@ -33,6 +33,13 @@ class Document extends Model
     ];
 
     /**
+     * @var array
+     */
+    public $casts = [
+        'payload' => 'json'
+    ];
+
+    /**
      * Default values
      *
      * @var array
