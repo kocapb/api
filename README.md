@@ -12,11 +12,11 @@
 git clone https://github.com/kocapb/api.git
 composer update
 </pre>
-Edit .env file for your database configuration
+Отредактируйте .env файл согласно вашим настройкам БД
 <pre>
 php artisan migrate
 </pre>
-For version Laravel 5.8 switch to the branch:
+Для поддержки Laravel 5.8 
 <pre>
 git checkout stable-5.8
 </pre>
