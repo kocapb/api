@@ -21,8 +21,7 @@ For version Laravel 5.8 switch to the branch:
 git checkout stable-5.8
 </pre>
 
-## Описание
-<b>API</b>
+## API
 <ul>
     <li>POST /api/v1/document/ - создаем черновик документа</li>
     <li>GET /api/v1/document/{id} - получить документ по id</li>
@@ -41,7 +40,7 @@ git checkout stable-5.8
     <li>апрос PATCH отправляется с телом json в соответсвующей иерархии документа, все поля, кроме payload игнорируются. Если payload не передан, то ответ 400.</li>
 </ul>
 
-<b>Объект документа</b>
+## <h3>Объект документа</h3>
 <pre>
 document = {
   id: "some-uuid-string",
@@ -49,5 +48,135 @@ document = {
   payload: Object,
   created_at: "iso-8601 date time with time zone",
   updated_at: "iso-8601 date time with time zone"
+}
+</pre>
+
+## Пример работы
+
+## <h3>1. Клиент делает запрос на создание документа</h3>
+Запрос:
+<pre>
+    POST /api/v1/document HTTP/1.1
+    accept: application/json
+</pre>
+Ответ:
+<pre>
+{
+    "document": {
+        "payload": {},
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
+        "status": "draft",
+        "updated_at": "2020-05-25 08:16:44",
+        "created_at": "2020-05-25 08:16:44"
+    }
+}
+</pre>
+
+## <h3>2. Клиент редактирует документ первый раз</h3>
+Запрос:
+<pre>
+PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
+accept: application/json
+content-type: application/json
+
+{
+    "document": {
+        "payload": {
+            "actor": "The fox",
+            "meta": {
+                "type": "quick",
+                "color": "brown"
+            },
+            "actions": [
+                {
+                    "action": "jump over",
+                    "actor": "lazy dog"
+                }
+            ]
+        }
+    }
+}
+</pre>
+Ответ: 
+<pre>
+HTTP/1.1 200 OK
+content-type: application/json
+
+{
+    "document": {
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
+        "status": "draft",
+        "payload": {
+            "meta": {
+                "type": "cunning",
+                "color": null
+            },
+            "actions": [
+                {
+                    "action": "eat",
+                    "actor": "blob"
+                },
+                {
+                    "action": "run away"
+                }
+            ]
+        },
+        "created_at": "2020-05-25 08:16:44",
+        "updated_at": "2020-05-25 09:04:57"
+    }
+}
+</pre>
+## 3. Клиент редактирует документ
+Запрос:
+<pre>
+PATCH /api/v1/document/dd6a2519-cc4b-4931-9567-040c30dfa0ca HTTP/1.1
+accept: application/json
+content-type: application/json
+
+{
+    "document": {
+        "payload": {
+            "meta": {
+                "type": "cunning",
+                "color": null
+            },
+            "actions": [
+                {
+                    "action": "eat",
+                    "actor": "blob"
+                },
+                {
+                    "action": "run away"
+                }
+            ]
+        }
+    }
+}
+</pre>
+
+Ответ:
+<pre>
+{
+    "document": {
+        "id": "dd6a2519-cc4b-4931-9567-040c30dfa0ca",
+        "status": "draft",
+        "payload": {
+            "meta": {
+                "type": "cunning",
+                "color": null
+            },
+            "actions": [
+                {
+                    "action": "eat",
+                    "actor": "blob"
+                },
+                {
+                    "action": "run away"
+                }
+            ]
+        },
+        "created_at": "2020-05-25 08:16:44",
+        "updated_at": "2020-05-25 09:07:45"
+    }
 }
 </pre>
