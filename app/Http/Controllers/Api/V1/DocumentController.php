@@ -9,7 +9,6 @@ use App\Http\Resources\Document as DocumentResources;
 use App\Http\Resources\DocumentCollection;
 use App\Http\Resources\Error;
 use App\Models\Document;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -61,6 +60,7 @@ class DocumentController extends Controller
             }
             $document->payload = $request->json()->get('document')['payload'];
             $document->save();
+
         } catch (\Exception $exception) {
             return (new Error($exception))->response()->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }

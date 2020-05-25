@@ -21,6 +21,12 @@ class Document extends Model
     const STATUS_DRAFT = 'draft';
     /** @var bool */
     public $incrementing = false;
+    /**
+     * @var array
+     */
+    public $casts = [
+        'payload' => 'json'
+    ];
     /** @var string */
     protected $keyType = 'string';
     /**
@@ -31,14 +37,6 @@ class Document extends Model
     protected $fillable = [
         'status', 'payload',
     ];
-
-    /**
-     * @var array
-     */
-    public $casts = [
-        'payload' => 'json'
-    ];
-
     /**
      * Default values
      *
