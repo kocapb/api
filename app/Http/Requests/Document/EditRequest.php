@@ -6,6 +6,9 @@ use App\Http\Requests\Request;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Symfony\Component\HttpFoundation\Response;
+use Opis\JsonSchema\{
+    Validator as JsonValidator, ValidationResult, ValidationError, Schema
+};
 
 /**
  * Class EditRequest

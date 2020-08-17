@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Throwable;
 
 /**
  * Class Error
@@ -11,14 +12,19 @@ use Illuminate\Http\Resources\Json\JsonResource;
  */
 class Error extends JsonResource
 {
+    /** @var Throwable */
+    protected $exception;
+
     /**
      * Error constructor.
+     * @param Throwable $exception
      * @param $resource
      */
-    public function __construct($resource = null)
+    public function __construct(Throwable $exception, $resource = null)
     {
         static::withoutWrapping();
         parent::__construct($resource);
+        $this->exception = $exception;
     }
 
     /**
@@ -30,8 +36,8 @@ class Error extends JsonResource
     public function toArray($request)
     {
         return [
-            'code' => $this->getCode(),
-            'message' => $this->getMessage(),
+            'code' => $this->exception->getCode(),
+            'message' =>  $this->exception->getMessage(),
         ];
     }
 }

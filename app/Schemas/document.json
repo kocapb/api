@@ -1,0 +1,40 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Document",
+    "description": "Документ",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "status",
+        "payload",
+        "created_at",
+        "updated_at"
+    ],
+    "properties": {
+        "id": {
+            "description": "uuid идентификатор",
+            "type": "string"
+        },
+        "status": {
+            "description": "Статус документа",
+            "type": "string",
+            "enum": [
+                "draft",
+                "published"
+            ]
+        },
+        "payload": {
+            "description": "Тело документа",
+            "type": "object"
+        },
+        "created_at": {
+            "description": "Дата создания документа в формате iso-8601 безчасовой зоной",
+            "type": "string"
+        },
+        "updated_at": {
+            "description": "Дата последнего изменения документа в формате iso-8601 безчасовой зоной",
+            "type": "string"
+        }
+    }
+}

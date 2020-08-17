@@ -35,8 +35,6 @@ class DocumentController extends Controller
     }
 
     /**
-     *
-     *
      * @param $uuid
      * @return DocumentResources|JsonResponse
      */
